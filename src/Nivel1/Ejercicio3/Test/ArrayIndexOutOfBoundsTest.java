@@ -8,7 +8,7 @@ import static org.junit.jupiter.api.Assertions.assertThrows;
 
         @Test
         public void testArrayIndexOutOfBoundsException() {
-            // Comprovem que s'està llançant l'excepció
+
             assertThrows(ArrayIndexOutOfBoundsException.class, () -> {
                 ArrayIndexOutOfBounds.throwException();
             });

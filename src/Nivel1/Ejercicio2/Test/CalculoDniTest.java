@@ -11,15 +11,11 @@ public class CalculoDniTest {
     @ParameterizedTest
     @CsvSource({
             "12345678, Z",
-            "23456789, S",
-            "34567890, Q",
-            "45678901, V",
-            "56789012, H",
-            "67890123, L",
-            "78901234, C",
-            "89012345, K",
-            "90123456, E",
-            "12345679, R"
+            "78901234, X",
+            "45678901, G",
+            "34567890, V",
+            "89012345, E",
+            "67890123, B"
     })
     public void testCalcularLletra(int dniNumero, String lletraEsperada) {
         String lletraCalculada = CalculoDni.calcularLletra(dniNumero);
