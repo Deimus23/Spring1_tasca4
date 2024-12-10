@@ -1,20 +1,23 @@
 package Nivel1.Ejercicio1.Test;
 
 import Nivel1.Ejercicio1.Modules.Book;
-import Nivel1.Ejercicio1.Modules.BookShelf;
+import Nivel1.Ejercicio1.Modules.BookShelfAlphabetical;
+import Nivel1.Ejercicio1.Modules.BookShelfPosition;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
-import java.util.ArrayList;
-
 class BookShelfTest {
-    private BookShelf bookShelf;
+    private BookShelfPosition bookShelf;
+    private BookShelfAlphabetical bookShelfAlphabetical;
 
     @BeforeEach
     void setUp() {
-        bookShelf = new BookShelf();
+        bookShelf = new BookShelfPosition();
     }
 
     @Test
@@ -63,18 +66,20 @@ class BookShelfTest {
         assertEquals(1, bookShelf.bookShelfSize(), "Removing a book should decrease the list size.");
     }
 
-    @Test
     void testListRemainsAlphabeticallyOrdered() {
-        bookShelf.addBook(0, new Book("Brave New World"));
-        bookShelf.addBook(1, new Book("1984"));
-        bookShelf.addBook(2, new Book("Fahrenheit 451"));
-        ArrayList<String> titles = new ArrayList<>();
-        for (int i = 0; i < bookShelf.bookShelfSize(); i++) {
-            titles.add(bookShelf.getBookTitle(i));
+
+        bookShelfAlphabetical.addBookA(new Book("Brave New World"));
+        bookShelfAlphabetical.addBookA(new Book("1984"));
+        bookShelfAlphabetical.addBookA(new Book("Fahrenheit 451"));
+
+        List<String> titles = new ArrayList<>();
+        for (Book book : bookShelfAlphabetical) {
+            titles.add(book.getName());
         }
-        ArrayList<String> sortedTitles = new ArrayList<>(titles);
+        List<String> sortedTitles = new ArrayList<>(titles);
         sortedTitles.sort(String::compareTo);
         assertEquals(sortedTitles, titles, "The list should remain alphabetically ordered.");
     }
 }
+
 

@@ -1,22 +1,21 @@
 package Nivel1.Ejercicio1.Modules;
 
 import java.util.ArrayList;
-import java.util.Collection;
 
-public class BookShelf {
-    private ArrayList<Book> bookShelf;
+public class BookShelfPosition {
+    private ArrayList<Book> bookShelfPosition;
 
-    public BookShelf() {
-        this.bookShelf = new ArrayList<>();
+    public BookShelfPosition() {
+        this.bookShelfPosition = new ArrayList<>();
     }
 
     public int bookShelfSize() {
-        return bookShelf.size();
+        return bookShelfPosition.size();
     }
 
     public void addBook(int position, Book book) {
         if (!searchBook(book)) {
-            bookShelf.add(position, book);
+            bookShelfPosition.add(position, book);
             System.out.println("The book " + book.getName() + " was added.");
         } else {
             System.out.println("The book " + book.getName() + " is already in the list.");
@@ -24,30 +23,30 @@ public class BookShelf {
     }
 
     public void listBooks() {
-        if (bookShelf.isEmpty()) {
+        if (bookShelfPosition.isEmpty()) {
             System.out.println("The bookshelf is empty.");
             return;
         }
-        for (Book book : bookShelf) {
+        for (Book book : bookShelfPosition) {
             System.out.println(book.getName());
         }
     }
 
     public String getBookTitle(int position) {
-        if (position < 0 || position >= bookShelf.size()) {
+        if (position < 0 || position >= bookShelfPosition.size()) {
             return "Invalid position.";
         }
-        return bookShelf.get(position).getName();
+        return bookShelfPosition.get(position).getName();
     }
 
     public boolean searchBook(Book book) {
-        return bookShelf.contains(book);
+        return bookShelfPosition.contains(book);
     }
 
     public boolean removeBookByTitle(String title) {
-        for (Book book : bookShelf) {
+        for (Book book : bookShelfPosition) {
             if (book.getName().equalsIgnoreCase(title)) {
-                bookShelf.remove(book);
+                bookShelfPosition.remove(book);
                 System.out.println("The book " + title + " was removed.");
                 return true;
             }
